@@ -1,0 +1,16 @@
+{
+  "name": "lambdajavatemplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "zip": "npx bestzip target/app.zip target/app.jar",
+    "jar": "mvn clean && mvn install && mvn package && npm run zip",
+    "save-bucket": "aws s3 rm s3://iprovider-saas-java/template.jar && aws s3 cp target/app.jar s3://iprovider-saas-java/template.jar",
+    "deploy-stack": "aws cloudformation deploy --template-file cloudformation/cloudFormation.yaml --stack-name templajavav5 --parameter-overrides file://cloudformation/cloudFormationParameters.json --capabilities CAPABILITY_NAMED_IAM --region us-east-2",
+    "delete-stack": "aws cloudformation delete-stack --stack-name templajavav5",
+    "deploy-all": "npm run jar && npm run save-bucket && npm run deploy-stack"
+  },
+  "author": "",
+  "license": "ISC"
+}

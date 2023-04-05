@@ -1,0 +1,27 @@
+[
+  {
+    "ParameterKey": "FUNCTIONNAME",
+    "ParameterValue": "template_java_v5"
+  },
+  {
+    "ParameterKey": "S3BUCKET",
+    "ParameterValue": "iprovider-saas-java"
+  },
+  {
+    "ParameterKey": "SRCCODE",
+    "ParameterValue": "template.jar"
+  },
+  {
+    "ParameterKey": "DBSCRTMANAGER",
+    "ParameterValue": "iprovider_saas_dev_java"
+  },
+  {
+    "ParameterKey": "PARAMSTORENAME",
+    "ParameterValue": "/dev/template/config"
+  },
+  {
+    "ParameterKey": "COGNITOARN",
+    "ParameterValue": "arn:aws:cognito-idp:us-east-2:432499991508:userpool/us-east-2_gyxoIEuX8"
+  }
+
+]
