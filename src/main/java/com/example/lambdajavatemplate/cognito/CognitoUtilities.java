@@ -21,7 +21,7 @@ import java.util.Map;
 public class CognitoUtilities {
 
     public AWSCognitoIdentityProvider createCognitoClient() {
-        AWSCredentials cred = new BasicAWSCredentials("AKIAWJMYCEPKBDWGN27P", "JvMWYzMFLT9h+GmJ6t61xkxC0w5vCwAV4gRI3KZ4");
+        AWSCredentials cred = new BasicAWSCredentials("<ACCESS>", "<SECRET>");
         AWSCredentialsProvider credProvider = new AWSStaticCredentialsProvider(cred);
         return AWSCognitoIdentityProviderClientBuilder.standard()
                 .withCredentials(credProvider)
@@ -31,7 +31,7 @@ public class CognitoUtilities {
 
     public SignUpResult signUp(String name, String email, String password) {
         AWSCognitoIdentityProvider client = createCognitoClient();
-        SignUpRequest request = new SignUpRequest().withClientId("dv2b5jqq6cnccgvnotfrolvp0")
+        SignUpRequest request = new SignUpRequest().withClientId("<CLIENT_ID>")
                 .withUsername(email)
                 .withPassword(password);
         SignUpResult result = client.signUp(request);
@@ -40,7 +40,7 @@ public class CognitoUtilities {
 
     public ConfirmSignUpResult confirmSignUp(String email, String confirmationCode) {
         AWSCognitoIdentityProvider client = createCognitoClient();
-        ConfirmSignUpRequest confirmSignUpRequest = new ConfirmSignUpRequest().withClientId("dv2b5jqq6cnccgvnotfrolvp0")
+        ConfirmSignUpRequest confirmSignUpRequest = new ConfirmSignUpRequest().withClientId("<CLIENT_ID>")
                 .withUsername(email).withConfirmationCode(confirmationCode);
         return client.confirmSignUp(confirmSignUpRequest);
     }
@@ -48,7 +48,7 @@ public class CognitoUtilities {
     public ResendConfirmationCodeResult resendConfirmationCode(String username){
         AWSCognitoIdentityProvider client = createCognitoClient();
         ResendConfirmationCodeRequest codeRequest = new ResendConfirmationCodeRequest()
-                .withClientId("dv2b5jqq6cnccgvnotfrolvp0")
+                .withClientId("<CLIENT_ID>")
                 .withUsername(username);
 
         ResendConfirmationCodeResult response = client.resendConfirmationCode(codeRequest);
@@ -74,8 +74,8 @@ public class CognitoUtilities {
 
         AdminInitiateAuthRequest authRequest = new AdminInitiateAuthRequest()
                 .withAuthFlow(AuthFlowType.ADMIN_NO_SRP_AUTH)
-                .withUserPoolId("us-east-2_gyxoIEuX8")
-                .withClientId("dv2b5jqq6cnccgvnotfrolvp0")
+                .withUserPoolId("<USER_POOL_ID>")
+                .withClientId("<CLIENT_ID>")
                 .withAuthParameters(authParams);
         AdminInitiateAuthResult authResult = client.adminInitiateAuth(authRequest);
         AuthenticationResultType resultType = authResult.getAuthenticationResult();
@@ -97,7 +97,7 @@ public class CognitoUtilities {
         }};
         InitiateAuthRequest authRequest = new InitiateAuthRequest()
                 .withAuthFlow(AuthFlowType.REFRESH_TOKEN_AUTH)
-                .withClientId("dv2b5jqq6cnccgvnotfrolvp0")
+                .withClientId("<CLIENT_ID>")
                 .withAuthParameters(authParams);
         InitiateAuthResult authResult = client.initiateAuth(authRequest);
         AuthenticationResultType resultType = authResult.getAuthenticationResult();
